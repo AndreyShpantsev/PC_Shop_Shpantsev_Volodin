@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,15 +8,20 @@ namespace PC_Shop_Database_Implementation.Models
     public class Supplier
     {
         public int ID { get; set; }
-        [Required]
+        [DisplayName("Ф.И.О.")]
+        [Required(ErrorMessage = "Заполните поле")]
         public string FullName { get; set; }
-        [Required]
+        [DisplayName("Электронная почта")]
+        [Required(ErrorMessage = "Заполните поле")]
         public string Login { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Заполните поле")]
+        [DisplayName("Пароль")]
         public string Password { get; set; }
-        public int WarehouseID { get; set; }
-        public virtual Warehouse Warehouse { get; set; }
+        [ForeignKey("SupplierID")]
+        public virtual List<Warehouse> Warehouses { get; set; }
         [ForeignKey("SupplierID")]
         public virtual List<Request> Requests { get; set; }
+        [ForeignKey("SupplierID")]
+        public virtual List<ComponentMovement> Movements { get; set; }
     }
 }

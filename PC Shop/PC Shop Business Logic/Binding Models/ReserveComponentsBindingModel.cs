@@ -2,8 +2,7 @@
 {
     public class ReserveComponentsBindingModel
     {
-        public int WarehouseID { get; set; }
+        public int RequestID { get; set; }
         public int ComponentID { get; set; }
-        public int Count { get; set; }
     }
 }

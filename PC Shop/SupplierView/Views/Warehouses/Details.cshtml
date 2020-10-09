@@ -1,0 +1,63 @@
+﻿@model Dictionary<int, (string, int, int)>
+
+@{
+    ViewData["Title"] = "Склад";
+}
+
+@section Links {
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Main">Заявки </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Warehouses" asp-action="List">Склады </a>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Склад №@ViewBag.WarehouseID</h1>
+</div>
+
+<hr />
+
+<p>
+    <a class="btn btn-outline-secondary" asp-action="List">Вернуться к списку складов</a>
+    <a class="btn btn-success" asp-controller="Components" asp-action="List" asp-route-warehouseID="@ViewBag.WarehouseID">Пополнить склад</a>
+</p>
+
+<hr />
+
+<table class="table table-hover table-bordered">
+    <thead class="thead thead-light">
+        <tr>
+            <th>
+                Комплектующее
+            </th>
+            <th class="text-center">
+                Свободно
+            </th>
+            <th class="text-center">
+                Зарезервировано
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value.Item1)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Value.Item2)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Value.Item3)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
