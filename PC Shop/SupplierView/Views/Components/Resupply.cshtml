@@ -1,0 +1,58 @@
+﻿@model PC_Shop_Business_Logic.Binding_Models.ResupplyWarehouseBindingModel
+
+@{
+    ViewData["Title"] = "Пополнение";
+}
+
+@section Links {
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="btn btn-secondary btn-sm" asp-area="" asp-controller="Warehouses" asp-action="List">Склады</a>
+                <a class="btn btn-secondary btn-sm" asp-area="" asp-controller="Account" asp-action="Main">Заявки</a>
+            </li>
+        </ul>
+    </div>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Пополнение склада №@ViewBag.warehouseID</h1>
+</div>
+
+<hr />
+
+<div class="text-center">
+    <h3>@ViewBag.componentName</h3>
+</div>
+
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-controller="Warehouses" asp-action="Resupply">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="WarehouseID" />
+            <input type="hidden" asp-for="ComponentID" />
+            <div class="form-group">
+                <label asp-for="Count" class="control-label">Количество</label>
+                <input asp-for="Count" class="form-control" />
+                <span asp-validation-for="Count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-row justify-content-center">
+                    <input type="submit" value="Пополнить" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<div>
+    <a class="btn btn-outline-secondary" asp-action="List"
+       asp-route-warehouseID="@ViewBag.warehouseID">
+        Вернуться к списку комплектующих
+    </a>
+</div>
+

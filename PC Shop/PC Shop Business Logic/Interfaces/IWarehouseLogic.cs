@@ -1,0 +1,16 @@
+﻿using PC_Shop_Business_Logic.Binding_Models;
+using PC_Shop_Business_Logic.View_Models;
+using System.Collections.Generic;
+
+namespace PC_Shop_Business_Logic.Interfaces
+{
+    public interface IWarehouseLogic
+    {
+        void CreateOrUpdate(WarehouseBindingModel model);
+        void Delete(WarehouseBindingModel model);
+        List<WarehouseViewModel> Read(WarehouseBindingModel model);
+        void Resupply(ResupplyWarehouseBindingModel model);
+        void Reserve(ResupplyWarehouseBindingModel model);
+        List<AvailableViewModel> GetAvailable(ResupplyWarehouseBindingModel model);
+    }
+}
