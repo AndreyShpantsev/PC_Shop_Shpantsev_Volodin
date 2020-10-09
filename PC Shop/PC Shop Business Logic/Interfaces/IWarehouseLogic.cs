@@ -9,5 +9,8 @@ namespace PC_Shop_Business_Logic.Interfaces
         void CreateOrUpdate(WarehouseBindingModel model);
         void Delete(WarehouseBindingModel model);
         List<WarehouseViewModel> Read(WarehouseBindingModel model);
+        void Resupply(ResupplyWarehouseBindingModel model);
+        void Reserve(ResupplyWarehouseBindingModel model);
+        List<AvailableViewModel> GetAvailable(ResupplyWarehouseBindingModel model);
     }
 }
